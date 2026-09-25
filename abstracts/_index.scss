@@ -1,0 +1,9 @@
+// =========================================================
+// ABSTRACTS / INDEX
+// Titik masuk tunggal untuk folder abstracts.
+// Semua partial lain cukup menulis:  @use "../abstracts" as *;
+// =========================================================
+
+@forward "variables";
+@forward "functions";
+@forward "mixins";

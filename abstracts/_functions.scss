@@ -1,0 +1,19 @@
+// =========================================================
+// ABSTRACTS / FUNCTIONS
+// Helper untuk mengambil nilai dari map di _variables.scss
+// =========================================================
+
+@use "sass:map";
+@use "variables" as v;
+
+@function color($name) {
+  @return map.get(v.$colors, $name);
+}
+
+@function spacer($name) {
+  @return map.get(v.$spacers, $name);
+}
+
+@function radius($name) {
+  @return map.get(v.$radii, $name);
+}

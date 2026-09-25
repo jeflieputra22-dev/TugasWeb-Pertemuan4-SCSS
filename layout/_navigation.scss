@@ -1,0 +1,39 @@
+// =========================================================
+// LAYOUT / NAVIGATION
+// =========================================================
+
+@use "../abstracts" as *;
+
+nav {
+  @include flex($justify: center, $align: center, $wrap: wrap, $gap: 10px);
+  position: relative;
+  z-index: 1;
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    @include transition(transform, background);
+
+    &:hover,
+    &:focus-visible {
+      background: #ffffff;
+      color: var(--color-primary-dark);
+      transform: translateY(-3px);
+      outline: none;
+    }
+  }
+
+  @include respond-to("mobile") {
+    width: 100%;
+
+    a {
+      flex: 1 1 100%;
+    }
+  }
+}

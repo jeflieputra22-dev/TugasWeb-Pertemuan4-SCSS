@@ -1,0 +1,97 @@
+// =========================================================
+// COMPONENTS / FORMS
+// =========================================================
+
+@use "../abstracts" as *;
+
+form {
+  margin-top: 22px;
+}
+
+fieldset {
+  margin: 0;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  background: #fafbff;
+}
+
+legend {
+  padding: 0 10px;
+  color: var(--color-primary-dark);
+  font-weight: 800;
+}
+
+form p {
+  margin: 0 0 18px;
+
+  &:last-child {
+    @include flex($wrap: wrap, $gap: 10px);
+  }
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 7px;
+  font-weight: 700;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+// Input yang tampilannya sama (text, email, date) di-generate lewat @each
+// supaya tidak menulis blok CSS yang sama berulang-ulang
+$text-like-inputs: "text", "email", "date";
+
+input {
+  @each $type in $text-like-inputs {
+    &[type="#{$type}"] {
+      width: 100%;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-small);
+      padding: 12px 14px;
+      color: var(--color-text);
+      background: #ffffff;
+      @include transition(border-color, box-shadow);
+
+      &:focus {
+        @include focus-ring;
+      }
+    }
+  }
+}
+
+textarea {
+  width: 100%;
+  min-height: 130px;
+  resize: vertical;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  padding: 12px 14px;
+  color: var(--color-text);
+  background: #ffffff;
+  @include transition(border-color, box-shadow);
+
+  &:focus {
+    @include focus-ring;
+  }
+}
+
+input[type="color"] {
+  width: 58px;
+  height: 42px;
+  padding: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: #ffffff;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}

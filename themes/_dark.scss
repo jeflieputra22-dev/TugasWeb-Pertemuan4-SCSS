@@ -1,0 +1,45 @@
+// =========================================================
+// THEMES / DARK
+// Bonus: dark mode. Override custom properties + beberapa
+// komponen yang butuh warna khusus.
+// =========================================================
+
+@use "../abstracts" as *;
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @each $name, $value in $colors-dark {
+      --color-#{$name}: #{$value};
+    }
+
+    --shadow-color: #{$shadow-color-dark};
+  }
+
+  #keahlian li {
+    background: #24284a;
+    border-color: #353b68;
+    color: #cdd1ff;
+  }
+
+  fieldset {
+    background: #111827;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  textarea,
+  input[type="color"] {
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+
+  button[type="reset"] {
+    color: #e5e7eb;
+    background: #374151;
+
+    &:hover {
+      background: #4b5563;
+    }
+  }
+}

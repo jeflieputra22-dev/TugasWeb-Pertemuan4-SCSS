@@ -1,0 +1,67 @@
+// =========================================================
+// ABSTRACTS / MIXINS
+// Minimal 3 mixin reusable (di sini ada 5)
+// =========================================================
+
+@use "sass:map";
+@use "sass:list";
+@use "variables" as v;
+@use "functions" as fn;
+
+// 1) Helper transisi cepat: @include transition(transform, background)
+@mixin transition($properties...) {
+  $result: ();
+
+  @each $prop in $properties {
+    $result: list.append($result, #{$prop} v.$transition-speed ease, comma);
+  }
+
+  transition: $result;
+}
+
+// 2) Helper flexbox agar tidak menulis 4-5 properti berulang
+@mixin flex(
+  $direction: row,
+  $justify: flex-start,
+  $align: stretch,
+  $wrap: nowrap,
+  $gap: null
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+// 3) Style "kartu" permukaan (dipakai section & aside di main grid)
+@mixin card($radius-key: "large") {
+  background: fn.color("surface");
+  border: 1px solid fn.color("border");
+  border-radius: fn.radius($radius-key);
+  box-shadow: 0 14px 40px v.$shadow-color;
+}
+
+// 4) Ring fokus untuk input/textarea
+@mixin focus-ring($color: fn.color("primary")) {
+  outline: none;
+  border-color: $color;
+  box-shadow: 0 0 0 4px rgba($color, 0.12);
+}
+
+// 5) Media query breakpoint berbasis map $breakpoints
+@mixin respond-to($breakpoint) {
+  $value: map.get(v.$breakpoints, $breakpoint);
+
+  @if $value {
+    @media (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` tidak ditemukan di $breakpoints.";
+  }
+}

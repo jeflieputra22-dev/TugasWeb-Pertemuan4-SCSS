@@ -1,0 +1,28 @@
+// =========================================================
+// MAIN.SCSS — Entry point (struktur 7-1 pattern)
+//
+//   scss/
+//   ├─ abstracts/   variables, functions, mixins
+//   ├─ base/        reset, root (css custom properties)
+//   ├─ layout/      header, navigation, main-grid, footer
+//   ├─ components/  figure, skills, forms, buttons
+//   ├─ themes/      dark mode
+//   └─ main.scss    (file ini)
+//
+// Semua koneksi antar file pakai @use, bukan @import.
+// =========================================================
+
+@use "base/reset";
+@use "base/root";
+
+@use "layout/header";
+@use "layout/navigation";
+@use "layout/main-grid";
+@use "layout/footer";
+
+@use "components/figure";
+@use "components/skills";
+@use "components/forms";
+@use "components/buttons";
+
+@use "themes/dark";

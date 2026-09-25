@@ -1,0 +1,25 @@
+// =========================================================
+// BASE / ROOT
+// :root custom properties di-generate otomatis dari map
+// $colors, $spacers, $radii pakai @each — supaya kalau mau
+// nambah warna/spacing baru, cukup edit map-nya saja.
+// =========================================================
+
+@use "../abstracts" as *;
+
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $spacers {
+    --space-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $radii {
+    --radius-#{$name}: #{$value};
+  }
+
+  --shadow-color: #{$shadow-color};
+  --content-width: #{$content-width};
+}

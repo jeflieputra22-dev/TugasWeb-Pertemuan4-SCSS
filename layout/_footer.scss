@@ -1,0 +1,17 @@
+// =========================================================
+// LAYOUT / FOOTER
+// =========================================================
+
+@use "../abstracts" as *;
+
+footer {
+  margin-top: 55px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #dbeafe;
+  background: #111827;
+
+  p {
+    margin: 5px 0;
+  }
+}

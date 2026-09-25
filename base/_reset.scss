@@ -1,0 +1,25 @@
+// =========================================================
+// BASE / RESET
+// =========================================================
+
+@use "../abstracts" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.7;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top right, rgba(108, 99, 255, 0.12), transparent 30%),
+    var(--color-background);
+}

@@ -1,0 +1,38 @@
+// =========================================================
+// COMPONENTS / SKILLS
+// Daftar tag keahlian (Flexbox), dengan efek stagger halus
+// pakai @for loop
+// =========================================================
+
+@use "../abstracts" as *;
+
+#keahlian {
+  ul {
+    margin: 20px 0 0;
+    padding: 0;
+    @include flex($wrap: wrap, $gap: 12px);
+    list-style: none;
+  }
+
+  li {
+    padding: 10px 16px;
+    border-radius: 999px;
+    color: var(--color-primary-dark);
+    background: #eef0ff;
+    border: 1px solid #dfe2ff;
+    font-weight: 600;
+    @include transition(transform, box-shadow);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px var(--shadow-color);
+    }
+
+    // Delay bertahap tiap tag, dibuat otomatis lewat @for
+    @for $i from 1 through 8 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{$i * 0.02}s;
+      }
+    }
+  }
+}

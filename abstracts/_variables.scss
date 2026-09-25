@@ -1,0 +1,56 @@
+// =========================================================
+// ABSTRACTS / VARIABLES
+// Semua warna & spacing didefinisikan sebagai map di sini,
+// nanti dikonversi jadi CSS custom properties lewat @each
+// (lihat base/_root.scss)
+// =========================================================
+
+// ---- Warna (light mode / default) ----
+$colors: (
+  "primary": #6c63ff,
+  "primary-dark": #4f46e5,
+  "secondary": #00bfa6,
+  "accent": #ffb703,
+  "background": #f4f7fb,
+  "surface": #ffffff,
+  "text": #1f2937,
+  "muted": #6b7280,
+  "border": #e5e7eb,
+);
+
+// ---- Warna override untuk dark mode ----
+$colors-dark: (
+  "background": #0f172a,
+  "surface": #172033,
+  "text": #e5e7eb,
+  "muted": #aeb7c7,
+  "border": #2d3748,
+);
+
+$shadow-color: rgba(31, 41, 55, 0.10);
+$shadow-color-dark: rgba(0, 0, 0, 0.25);
+
+// ---- Skala spacing ----
+$spacers: (
+  "xs": 4px,
+  "sm": 10px,
+  "md": 18px,
+  "lg": 28px,
+  "xl": 38px,
+);
+
+// ---- Skala radius ----
+$radii: (
+  "small": 10px,
+  "medium": 16px,
+  "large": 24px,
+);
+
+$content-width: 1120px;
+$transition-speed: 0.25s;
+
+// ---- Breakpoints (dipakai mixin respond-to) ----
+$breakpoints: (
+  "tablet": 800px,
+  "mobile": 520px,
+);

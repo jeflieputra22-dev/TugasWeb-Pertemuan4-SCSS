@@ -1,0 +1,127 @@
+// =========================================================
+// LAYOUT / MAIN GRID
+// Struktur utama pakai CSS Grid
+// =========================================================
+
+@use "../abstracts" as *;
+
+main {
+  width: min(100% - 32px, var(--content-width));
+  margin: 42px auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  grid-template-areas:
+    "tentang tentang"
+    "keahlian tambahan"
+    "kontak kontak";
+  gap: 28px;
+
+  section,
+  aside {
+    @include card("large");
+    padding: clamp(22px, 4vw, 38px);
+
+    @include respond-to("mobile") {
+      padding: 20px;
+      border-radius: var(--radius-medium);
+    }
+  }
+
+  @include respond-to("tablet") {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "tentang"
+      "keahlian"
+      "tambahan"
+      "kontak";
+  }
+
+  @include respond-to("mobile") {
+    width: min(100% - 20px, var(--content-width));
+    margin: 25px auto;
+    gap: 18px;
+  }
+}
+
+#tentang {
+  grid-area: tentang;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.4fr);
+  grid-template-areas:
+    "judul profil"
+    "foto profil";
+  gap: 20px 50px;
+  align-items: center;
+
+  > h2 {
+    grid-area: judul;
+    align-self: end;
+    margin-bottom: 0;
+  }
+
+  > article {
+    grid-area: profil;
+    align-self: center;
+  }
+
+  > figure {
+    grid-area: foto;
+    align-self: center;
+    justify-self: center;
+    margin-top: 5px;
+  }
+
+  @include respond-to("tablet") {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "judul"
+      "foto"
+      "profil";
+    text-align: center;
+    gap: 20px;
+
+    > h2 {
+      align-self: auto;
+    }
+
+    > figure {
+      justify-self: center;
+      margin-top: 0;
+    }
+  }
+}
+
+#keahlian {
+  grid-area: keahlian;
+}
+
+#kontak {
+  grid-area: kontak;
+}
+
+aside {
+  grid-area: tambahan;
+  align-self: stretch;
+  background:
+    linear-gradient(145deg, rgba(108, 99, 255, 0.08), rgba(0, 191, 166, 0.08)),
+    var(--color-surface);
+}
+
+// Heading & teks umum di dalam section/aside
+section h2,
+aside h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: var(--color-primary-dark);
+  font-size: 1.8rem;
+}
+
+article h3 {
+  margin-top: 0;
+}
+
+article p,
+aside p,
+figcaption {
+  color: var(--color-muted);
+}

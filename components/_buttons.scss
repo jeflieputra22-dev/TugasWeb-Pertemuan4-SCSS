@@ -1,0 +1,44 @@
+// =========================================================
+// COMPONENTS / BUTTONS
+// Varian tombol (default & reset) di-generate dari map
+// pakai @each, biar gampang nambah varian baru
+// =========================================================
+
+@use "sass:map";
+@use "../abstracts" as *;
+
+$button-variants: (
+  "reset": (
+    color: var(--color-text),
+    background: #e5e7eb,
+    hover-background: #d1d5db,
+  ),
+);
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 20px;
+  font-weight: 800;
+  cursor: pointer;
+  color: #ffffff;
+  background: var(--color-primary);
+  @include transition(transform, background, box-shadow);
+
+  &:hover {
+    transform: translateY(-2px);
+    background: var(--color-primary-dark);
+    box-shadow: 0 9px 20px var(--shadow-color);
+  }
+}
+
+@each $variant, $props in $button-variants {
+  button[type="#{$variant}"] {
+    color: map.get($props, "color");
+    background: map.get($props, "background");
+
+    &:hover {
+      background: map.get($props, "hover-background");
+    }
+  }
+}
